@@ -24,6 +24,12 @@ function drukOpCijfer(cijfer) {
     display.value = display.value + cijfer
   }
 }
+
+function drukOpOperator(gekozenOperator) {
+  eersteGetal.value = display.value
+  operator.value = gekozenOperator
+  display.value = 0
+}
 </script>
 
 <style>
