@@ -1,10 +1,16 @@
 <template>
-   <div>
+  <div>
     <p>{{ display }}</p>
     <button @click="drukOpCijfer('1')">1</button>
     <button @click="drukOpCijfer('2')">2</button>
     <button @click="drukOpCijfer('3')">3</button>
+    <button @click="drukOpOperator('+')">+</button>
+    <button @click="drukOpOperator('-')">-</button>
+    <button @click="drukOpOperator('*')">×</button>
+    <button @click="drukOpOperator('/')">÷</button>
+    <button @click="berekenen()">=</button>
   </div>
+
 </template>
 
 <script setup>
@@ -30,7 +36,31 @@ function drukOpOperator(gekozenOperator) {
   operator.value = gekozenOperator
   display.value = 0
 }
+
+function berekenen() {
+  const a = Number(eersteGetal.value)
+  tweedeGetal.value = display.value
+  const b = Number(tweedeGetal.value)
+
+  if (operator.value === "+") {
+    resultaat.value = a + b
+  } else if (operator.value === "-") {
+    resultaat.value = a - b
+  } else if (operator.value === "*") {
+    resultaat.value = a * b
+  } else if (operator.value === "/") {
+    resultaat.value = a / b
+  }
+  display.value = resultaat.value
+}
+
+function reset(){
+  resultaat.value = 0
+  operator.value = null
+  display.value = "0"
+  eersteGetal.value = 0
+  tweedeGetal.value = 0
+}
 </script>
 
-<style>
-</style>
+<style></style>
